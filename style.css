@@ -1,144 +1,503 @@
-/* Global reset & box sizing */
+/* ==========================================================================
+   NASA Brand Guidelines & NASA Web Design System (NAWDS) Styling
+   Reference:
+   - NASA Brand Guidelines: https://www.nasa.gov/nasa-brand-center/brand-guidelines/
+   - NASA Web Design System Colors: https://nasa.github.io/nasawds-site/components/colors/
+   ========================================================================== */
+
+:root {
+  /* NASA Primary Colors */
+  --color-primary: #105bd8;            /* NASA Digital Blue ($color-primary) */
+  --color-primary-darker: #0b3d91;     /* Official NASA Blue / Insignia Blue ($color-primary-darker) */
+  --color-primary-darkest: #061f4a;    /* Deep Space Navy ($color-primary-darkest) */
+
+  /* NASA Secondary / Accent Colors (Worm Logo & Meatball Chevron) */
+  --color-secondary: #fc3d21;          /* NASA Official Red (Pantone 185) */
+  --color-secondary-dark: #dd361c;     /* NASAWDS Secondary Red ($color-secondary) */
+  --color-secondary-darkest: #99231b;  /* NASAWDS Dark Red hover ($color-secondary-darkest) */
+
+  /* NASA Primary Alt / Cyan Accent */
+  --color-primary-alt: #02bfe7;        /* NASA Cyan ($color-primary-alt) */
+  --color-primary-alt-dark: #00a6d2;   /* NASA Dark Cyan ($color-primary-alt-dark) */
+  --color-primary-alt-lightest: #e1f3f8; /* Light Cyan tint */
+
+  /* NASA Neutrals & Grays */
+  --color-base: #212121;               /* Charcoal text ($color-base) */
+  --color-gray-dark: #323a45;          /* Slate Gray ($color-gray-dark) */
+  --color-gray-medium: #5b616b;        /* Medium Gray for dates/subtext ($color-gray-medium) */
+  --color-gray-light: #aeb0b5;         /* Subtle border gray ($color-gray-light) */
+  --color-gray-lighter: #d6d7d9;       /* Light border gray ($color-gray-lighter) */
+  --color-bg-page: #f4f5f8;            /* NASA light interface background */
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-sans: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+/* Global Reset & Box Sizing */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Base page styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
-  padding: 20px;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-page);
+  color: var(--color-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Centered container */
+/* NASA Top Agency Banner */
+.nasa-banner {
+  background-color: var(--color-primary-darkest);
+  border-bottom: 2px solid var(--color-secondary);
+  padding: 6px 20px;
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.agency-badge {
+  opacity: 0.95;
+}
+
+/* Centered Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Header */
+.main-content {
+  padding: 30px 20px;
+}
+
+/* Header with NASA Worm Logo */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--color-gray-lighter);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
-  font-family: Verdana, sans-serif;
-  font-weight: bold;
-  color: #212121;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--color-primary-darker);
+  letter-spacing: -0.5px;
 }
 
-/* Logo */
-.logo {
-  width: 140px;
-  margin-right: 15px;
+.tagline {
+  font-size: 13px;
+  color: var(--color-gray-medium);
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
-/* Date‐picker & button row */
+/* Filter Controls */
 .filters {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  align-items: stretch;
   justify-content: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
+  margin-bottom: 30px;
+  background-color: var(--color-white);
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--color-gray-lighter);
+  box-shadow: 0 1px 3px rgba(6, 31, 74, 0.05);
 }
 
-/* Inputs and buttons */
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-item label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gray-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Date Inputs & Button */
 input[type="date"],
 button {
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  padding: 10px 14px;
   border-radius: 4px;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 100%;
+  transition: all 0.2s ease;
 }
 
-/* Button specific */
+input[type="date"] {
+  border: 1px solid var(--color-gray-light);
+  background-color: var(--color-white);
+  color: var(--color-base);
+}
+
+input[type="date"]:focus {
+  outline: 3px solid var(--color-primary-alt);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+
+/* NASA Primary Button (NASA Digital Blue) */
 button {
-  background-color: #d3d3d3;
-  color: black;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid transparent;
+  font-weight: 700;
   cursor: pointer;
-}
-button:hover {
-  background-color: #bfbfbf;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(16, 91, 216, 0.2);
 }
 
-/* Stack horizontally on wider screens */
-@media (min-width: 600px) {
+button:hover {
+  background-color: var(--color-primary-darker);
+  box-shadow: 0 4px 8px rgba(11, 61, 145, 0.3);
+}
+
+button:active {
+  background-color: var(--color-primary-darkest);
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--color-primary-alt);
+  outline-offset: 2px;
+}
+
+/* Horizontal alignment on wider screens */
+@media (min-width: 700px) {
   .filters {
     flex-direction: row;
-    padding: 0;
+    align-items: flex-end;
   }
-  
-  input[type="date"],
+
+  .filter-item {
+    flex: 1;
+    max-width: 260px;
+  }
+
   button {
-    width: auto;
+    height: 42px;
+    padding: 0 24px;
   }
 }
 
-/* Gallery flex container */
+/* "Did You Know?" Random Space Fact Section */
+.space-fact-section {
+  margin-bottom: 30px;
+}
+
+.fact-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-lighter);
+  border-left: 4px solid var(--color-secondary);
+  border-radius: 6px;
+  padding: 18px 22px;
+  box-shadow: 0 1px 4px rgba(6, 31, 74, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fact-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--color-white);
+  background-color: var(--color-secondary);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.fact-icon {
+  font-size: 20px;
+}
+
+.fact-text {
+  font-size: 15px;
+  color: var(--color-base);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Gallery Flex Container */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 24px;
   justify-content: center;
 }
 
-/* Gallery items */
+/* Gallery Items / Cards */
 .gallery-item {
-  flex: 1 1 100%;  /* full width by default */
+  flex: 1 1 100%;
   min-width: 280px;
-  max-width: 500px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
+  max-width: 380px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-lighter);
+  border-top: 3px solid var(--color-primary-darker);
+  border-radius: 6px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(6, 31, 74, 0.06);
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
-  }
+.gallery-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(11, 61, 145, 0.14);
 }
 
 .gallery-item img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  background-color: var(--color-primary-darkest);
 }
 
-.gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 14px;
+.gallery-item img:hover {
+  opacity: 0.92;
 }
 
-/* Placeholder content */
+.gallery-video {
+  width: 100%;
+  height: 220px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--color-primary-darkest);
+}
+
+.card-details {
+  cursor: pointer;
+}
+
+.media-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: var(--color-primary-darker);
+  color: var(--color-white);
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.gallery-item h3 {
+  font-family: var(--font-sans);
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary-darker);
+  line-height: 1.35;
+}
+
+.gallery-item .date {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gray-medium);
+  letter-spacing: 0.2px;
+}
+
+/* Placeholder State */
 .placeholder {
   flex: 1 1 100%;
   text-align: center;
-  padding: 40px;
-  color: #666;
+  padding: 60px 20px;
+  background-color: var(--color-white);
+  border: 1px dashed var(--color-gray-lighter);
+  border-radius: 8px;
+  color: var(--color-gray-dark);
 }
 
 .placeholder-icon {
   font-size: 48px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+}
+
+.placeholder p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Modal View */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Deep Space Navy overlay */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(6, 31, 74, 0.85);
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  position: relative;
+  background: var(--color-white);
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  border-radius: 8px;
+  border-top: 5px solid var(--color-secondary); /* NASA Red accent stripe */
+  box-shadow: 0 10px 30px rgba(6, 31, 74, 0.4);
+  padding: 24px;
+  overflow-y: auto;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-bg-page);
+  color: var(--color-base);
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1002;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.modal-close:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+  background-color: var(--color-primary-darkest);
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.modal-video {
+  width: 100%;
+  height: 440px;
+  max-height: 55vh;
+  background-color: var(--color-primary-darkest);
+  border-radius: 6px;
+  border: none;
+  margin-top: 10px;
+}
+
+.modal-title {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary-darker);
+  margin-top: 16px;
+  line-height: 1.3;
+}
+
+.modal-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray-medium);
+  margin-top: 6px;
+}
+
+.modal-explanation {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-base);
+  margin-top: 16px;
+}
+
+.modal-explanation a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.modal-explanation a:hover {
+  color: var(--color-secondary);
+}
+
+/* Utility to hide elements */
+.hidden {
+  display: none !important;
 }

@@ -7,23 +7,65 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="container">
+  <!-- NASA Agency Top Banner -->
+  <div class="nasa-banner">
+    <div class="container banner-inner">
+      <span class="agency-badge">National Aeronautics and Space Administration</span>
+    </div>
+  </div>
+
+  <div class="container main-content">
     <header class="site-header">
-      <img src="img/nasa-worm-logo.png" alt="NASA Logo" class="logo" />
-      <h1>Space Explorer</h1>
+      <div class="header-brand">
+        <img src="img/nasa-worm-logo.png" alt="NASA Logo" class="logo" />
+        <div class="header-text">
+          <h1>Space Explorer</h1>
+          <p class="tagline">Astronomy Picture of the Day Archive</p>
+        </div>
+      </div>
     </header>
 
     <div class="filters">
-      <input type="date" id="startDate" />
-      <input type="date" id="endDate" />
-      <button>Get Space Images</button>
+      <div class="filter-item">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" />
+      </div>
+      <div class="filter-item">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" />
+      </div>
+      <button type="button">Get Space Images</button>
     </div>
+
+    <!-- Did You Know? Random Space Fact Section -->
+    <section class="space-fact-section" aria-label="Did You Know? Space Fact">
+      <div class="fact-card">
+        <div class="fact-header">
+          <span class="fact-badge">Did You Know?</span>
+          <span class="fact-icon">🪐</span>
+        </div>
+        <p id="spaceFactText" class="fact-text">Loading space fact...</p>
+      </div>
+    </section>
 
     <div id="gallery" class="gallery">
       <div class="placeholder">
         <div class="placeholder-icon">🔭</div>
         <p>Select a date range and click "Get Space Images" to explore the cosmos!</p>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal View for Image and Video Details -->
+  <div id="imageModal" class="modal hidden">
+    <div id="modalOverlay" class="modal-overlay"></div>
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close" aria-label="Close modal">&times;</button>
+      <img id="modalImage" class="modal-image" src="" alt="" />
+      <iframe id="modalVideo" class="modal-video hidden" src="" frameborder="0" allowfullscreen></iframe>
+      <h2 id="modalTitle" class="modal-title"></h2>
+      <p id="modalDate" class="modal-date"></p>
+      <div id="modalExplanation" class="modal-explanation"></div>
     </div>
   </div>
 
